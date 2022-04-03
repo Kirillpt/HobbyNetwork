@@ -10,25 +10,25 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body class="bg-gray-200">
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="relative bg-white">
+<div class="relative bg-gray-100">
   <div class="max-w-7xl mx-auto px-4 sm:px-6">
     <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
       <div class="flex justify-start lg:w-0 lg:flex-1">
         <a href="#">
-          <span> Hobby Network </span>
+          <span class="mt-6 text-center text-3xl font-extrabold text-green-700"> Hobby Network </span>
         </a>
       </div>
       <nav class="hidden md:flex space-x-10">
       </nav>
       <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-        <%= link_to "Sign in", new_user_session_path,  class: "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"%>
         <% if user_signed_in? %>
-          <%= link_to "Sign out", destroy_user_session_path, data: {"turbo-method": :delete },  class: "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"%>
+          <%= link_to "Sign out", destroy_user_session_path, data: {"turbo-method": :delete },  class: "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700"%>
         <% else %>
-        <%= link_to "Sign up", new_user_registration_path,  class: "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"%>
+        <%= link_to "Sign in", new_user_session_path,  class: "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700"%>
         <% end %>
+        <%= link_to "Sign up", new_user_registration_path,  class: "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700"%>
       </div>
     </div>
   </div>
