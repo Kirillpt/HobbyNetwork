@@ -1,0 +1,11 @@
+
+<div class="mt-6 mr-6">
+<h2 class="text-right text-3xl font-extrabold text-green-700">User List: </h2>
+<ul class="text-right">
+<% for user in @users do %>
+<li class="text-xl text-orange-600 ">
+  <a href="#"> <%= user.email %> </a>
+</li>
+<% end %>
+</ul>
+</div>
