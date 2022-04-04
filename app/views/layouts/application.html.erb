@@ -27,8 +27,8 @@
           <%= link_to "Sign out", destroy_user_session_path, data: {"turbo-method": :delete },  class: "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700"%>
         <% else %>
         <%= link_to "Sign in", new_user_session_path,  class: "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700"%>
-        <% end %>
         <%= link_to "Sign up", new_user_registration_path,  class: "ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-orange-600 hover:bg-orange-700"%>
+        <% end %>
       </div>
     </div>
   </div>
