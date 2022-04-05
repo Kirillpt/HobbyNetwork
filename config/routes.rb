@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
-  root 'mainpage#index'
   resources :user, only: [:show]
+  resources :category, only: [:show], param: :slug
+  resources :post, only: [:show], param: :slug
+  root 'mainpage#index'
 end

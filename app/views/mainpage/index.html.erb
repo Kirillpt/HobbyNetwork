@@ -1,11 +1,28 @@
+<div class="flex mt-6 max-w-7xl mx-auto px-4 sm:px-6">
+  <% if current_user.present? %>
+    <div class="flex-1 text-left">
+      <h2 class="text-3xl font-extrabold text-green-700">Your Categories: </h2>
+      <div class="grid grid-cols-1">
+        <%= render partial: "category/category", collection: current_user.categories %>
+      </div>
+    </div>
 
-<div class="mt-6 mr-6">
-  <h2 class="text-right text-3xl font-extrabold text-green-700">User List: </h2>
-  <ul class="text-right">
-    <% for user in @users do %>
-    <li class="text-xl text-orange-600 ">
-      <%= link_to user.email, user_path(user) %>
-    </li>
-    <% end %>
-  </ul>
+  <div class="flex-1">
+      <h2 class="text-3xl font-extrabold text-green-700">Your Posts: </h2>
+      <%= render partial: "post/post", collection: @user_posts %>
+  </div>
+    <div >
+      <h2 class="flex-1 text-3xl font-extrabold text-green-700">User List: </h2>
+      <div class="grid grid-cols-1">
+        <%= render partial: "user/user", collection: @users %>
+      </div>
+    </div>
+
+  <% else %>
+  <div class="flex-1">
+      <h2 class="text-3xl font-extrabold text-green-700">Fresh Posts: </h2>
+      <%= render partial: "post/post", collection: @new_posts %>
+  </div>
+
+  <% end %>
 </div>
