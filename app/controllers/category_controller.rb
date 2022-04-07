@@ -9,7 +9,12 @@ class CategoryController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    @category.users << current_user
+    begin
+        @category.users << current_user
+    rescue ActiveRecord::AssociationTypeMismatch
+      redirect_to new_user_session_path
+      return
+    end
     if @category.save
       redirect_to root_url
     else
