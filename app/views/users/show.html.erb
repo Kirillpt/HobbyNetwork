@@ -1,0 +1,7 @@
+<h2 class="text-center text-3xl font-extrabold text-green-700">Profile: <%= @user.email %> </h2>
+<div class="flex mt-6 max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="flex-1 text-left">
+    <h2 class="text-3xl font-extrabold text-green-700">User Categories: </h2>
+    <%= render partial: "category/category", collection: @user.categories  %>
+  </div>
+</div>
