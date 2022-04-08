@@ -16,9 +16,22 @@ class CategoriesController < ApplicationController
       return
     end
     if @category.save
-      redirect_to root_path
+      redirect_to category_path(@category.slug)
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @category = Category.find_by(slug: params[:slug])
+  end
+
+  def update
+    @category = Category.find_by(slug: params[:slug])
+    if @category.update(category_params)
+      redirect_to category_path(@category.slug)
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

@@ -7,10 +7,10 @@
     <%= form_with model: @post do |f| %>
       <div class="rounded-md shadow-sm -space-y-px">
           <%= f.text_field :title, autofocus: true, autocomplete: "title", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm", placeholder: "Post Title" %>
-          <%= f.text_area :body, autofocus: true, required: true, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm", placeholder: "Body" %>
+          <%= f.text_area :body, autofocus: true, required: true, class: "appearance-none rounded-none relative block w-full px-4 py-5 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm", placeholder: "Body" %>
+      <%= collection_select(:current_user, :category_id, current_user.categories, :id, :title,{}, {class:"bg-white text-lg border-orange-500 text-green-800 rounded-b-md"} )%>
 
       </div>
-      <%= collection_select(:current_user, :category_id, current_user.categories, :id, :title)  %>
 
       <div class="actions">
           <%= f.submit "Create Post", class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 mt-5" %>
