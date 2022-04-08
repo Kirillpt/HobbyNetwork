@@ -1,3 +1,20 @@
+<div class="relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex justify-between items-center border-b-2 border-amber-700 py-1 md:justify-start md:space-x-10">
+      <div class="flex justify-start lg:w-0 lg:flex-1 ">
+        <% if user_signed_in? %>
+<%= link_to "Add Category", new_category_path, class:"whitespace-nowrap inline-flex items-center justify-center px-2 py-1 border border-transparent rounded-md shadow-sm text-based font-medium text-white bg-orange-600 hover:bg-orange-700 mr-4"%>
+
+<%= link_to "Add Post", new_post_path, class:"whitespace-nowrap inline-flex items-center justify-center px-2  border border-transparent rounded-md shadow-sm text-based font-medium text-white bg-orange-600 hover:bg-orange-700"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <div class="flex mt-6 max-w-7xl mx-auto px-4 sm:px-6">
   <% if current_user.present? %>
     <div class="flex-1 text-left">
@@ -5,7 +22,6 @@
       <div class="grid grid-cols-1">
         <%= render partial: "categories/category", collection: current_user.categories %>
       </div>
-<%= link_to "Add Category", new_category_path, class:"whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700"%>
     </div>
 
     <div class="flex-1">
@@ -13,7 +29,6 @@
         <h2 class="text-3xl font-extrabold text-green-700">Your Posts: </h2>
         <%= render partial: "posts/post", collection: @user_posts %>
       </div>
-<%= link_to "Add Post", new_post_path, class:"whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700"%>
   </div>
     <div >
       <h2 class="flex-1 text-3xl font-extrabold text-green-700">User List: </h2>
@@ -21,7 +36,6 @@
         <%= render partial: "users/user", collection: @users %>
       </div>
     </div>
-
   <% else %>
   <div class="flex-1">
       <h2 class="text-3xl font-extrabold text-green-700">Fresh Posts: </h2>
