@@ -1,7 +1,17 @@
+
 <h2 class="text-center text-3xl font-extrabold text-green-700">Profile: <%= @user.email %> </h2>
 <div class="flex mt-6 max-w-7xl mx-auto px-4 sm:px-6">
-  <div class="flex-1 text-left">
-    <h2 class="text-3xl font-extrabold text-green-700">User Categories: </h2>
-    <%= render partial: "category/category", collection: @user.categories  %>
+    <div class="flex-1 text-left">
+      <h2 class="text-3xl font-extrabold text-green-700">User Categories: </h2>
+      <div class="grid grid-cols-1">
+        <%= render partial: "categories/category", collection: @user.categories %>
+      </div>
+    </div>
+
+    <div class="flex-1">
+      <div class="grid grid-cols-1 ">
+        <h2 class="text-3xl font-extrabold text-green-700">User Posts: </h2>
+        <%= render partial: "posts/post", collection: @user.posts %>
+      </div>
   </div>
 </div>
