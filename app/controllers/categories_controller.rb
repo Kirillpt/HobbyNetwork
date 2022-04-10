@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+
   def show
     @category = Category.find_by(slug: params[:slug])
   end
@@ -11,7 +12,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     begin
         @category.users << current_user
-    rescue ActiveRecord::AssociationTypeMismatch
+    rescue
       redirect_to new_user_session_path
       return
     end
@@ -23,11 +24,20 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find_by(slug: params[:slug])
+    begin
+    @category = Category.current_user.find_by!(slug: params[:slug])
+    rescue
+      redirect_to root_path
+    end
   end
 
   def update
-    @category = Category.find_by(slug: params[:slug])
+    begin
+    @category = Category.current_user.find_by!(slug: params[:slug])
+    rescue
+      redirect_to root_path
+      return
+    end
     if @category.update(category_params)
       redirect_to category_path(@category.slug)
     else
@@ -36,7 +46,12 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @Category = Category.find_by(slug: params[:slug])
+    begin
+        @Category = Category.current_user.find_by!(slug: params[:slug])
+    rescue
+      redirect_to root_path
+      return
+    end
     @Category.destroy
     redirect_to root_path, status: :see_other
   end
