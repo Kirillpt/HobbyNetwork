@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :categories, param: :slug
   resources :posts,  param: :slug
   root 'mainpages#index'
+  get 'homepage', to: 'mainpages#homepage'
 end

@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
 
   def edit
     begin
-    @category = Category.current_user.find_by!(slug: params[:slug])
+    @category = current_user.categories.find_by!(slug: params[:slug])
     rescue
       redirect_to root_path
     end
@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
 
   def update
     begin
-    @category = Category.current_user.find_by!(slug: params[:slug])
+    @category = current_user.categories.find_by!(slug: params[:slug])
     rescue
       redirect_to root_path
       return
@@ -47,12 +47,12 @@ class CategoriesController < ApplicationController
 
   def destroy
     begin
-        @Category = Category.current_user.find_by!(slug: params[:slug])
+        @category = current_user.categories.find_by!(slug: params[:slug])
     rescue
       redirect_to root_path
       return
     end
-    @Category.destroy
+    @category.destroy
     redirect_to root_path, status: :see_other
   end
 

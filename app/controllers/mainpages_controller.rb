@@ -7,4 +7,9 @@ class MainpagesController < ApplicationController
         @user_posts = current_user.posts.order("updated_at DESC").first(10)
     end
   end
+
+  def homepage
+    @posts = Post.all.order("created_at DESC").limit(2)
+  end
+
 end

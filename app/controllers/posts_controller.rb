@@ -25,8 +25,39 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+      binding.pry
+      @post = current_user.posts.find_by!(slug: params[:slug])
+      @post.category_id = Category.find(category_id).id
+      @post.user_id = current_user.id
+      #redirect_to root_path
+    if @post.update(post_params)
+      redirect_to post_path(@post.slug)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    begin
+      @post = current_user.posts.find_by!(slug: params[:slug])
+    rescue
+      redirect_to root_path
+    end
+  end
+
   def show
     @post = Post.find_by(slug: params[:slug])
+  end
+
+  def destroy
+    begin
+      @post = current_user.posts.find_by!(slug: params[:slug])
+    rescue
+      redirect_to root_path
+    end
+    @post.destroy
+    redirect_to root_path, status: :see_other
   end
   private
 
