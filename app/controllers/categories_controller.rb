@@ -32,6 +32,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    binding.pry
     begin
     @category = current_user.categories.find_by!(slug: params[:slug])
     rescue

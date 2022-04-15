@@ -25,19 +25,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def update
-      binding.pry
-      @post = current_user.posts.find_by!(slug: params[:slug])
-      @post.category_id = Category.find(category_id).id
-      @post.user_id = current_user.id
-      #redirect_to root_path
-    if @post.update(post_params)
-      redirect_to post_path(@post.slug)
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
   def edit
     begin
       @post = current_user.posts.find_by!(slug: params[:slug])
@@ -45,6 +32,23 @@ class PostsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def update
+    begin
+      @post = current_user.posts.find_by!(slug: params[:slug])
+      @post.category_id = current_user.categories.find(params[:post][:category_id]).id
+      @post.user_id = current_user.id
+    rescue
+      redirect_to root_path
+      return
+    end
+    if @post.update(post_params)
+      redirect_to post_path(@post.slug)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
 
   def show
     @post = Post.find_by(slug: params[:slug])
@@ -62,6 +66,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :current_user => :category_id)
+    params.require(:post).permit(:title, :body)
   end
 end

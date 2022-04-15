@@ -4,7 +4,7 @@
       <h2 class="mt-6 text-center text-3xl font-extrabold text-green-700">Edit Post</h2>
     </div>
     <div class="mt-8 space-y-6">
-    <%= form_with model: @post do |f| %>
+    <%= form_with model: @post, url: post_path(@post.slug) do |f| %>
       <div class="rounded-md shadow-sm -space-y-px">
           <%= f.text_field :title, autofocus: true, autocomplete: "title", required: true, class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm", placeholder: "Post Title" %>
           <%= f.text_area :body, autofocus: true, required: true, class: "appearance-none rounded-none relative block w-full px-4 py-5 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm", placeholder: "Body" %>
