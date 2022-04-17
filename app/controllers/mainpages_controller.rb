@@ -10,6 +10,10 @@ class MainpagesController < ApplicationController
 
   def homepage
     @posts = Post.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 5)
+    if params[:post_search]
+      @post_search_result= Post.search(params[:post_search]).order("created_at DESC")
+    elsif params[:category_search]
+      @category_search_result = Category.search(params[:category_search]).order("created_at DESC")
+    end
   end
-
 end

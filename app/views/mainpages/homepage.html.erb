@@ -12,4 +12,33 @@
       <% end %>
       <%= will_paginate @posts %>
   </div>
+
+  <%= form_tag("/homepage", :method => "get") do %>
+    <%= text_field_tag :post_search, params[:post_search], placeholder: "Search Posts" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+  <% if @post_search_result %>
+    <% if @post_search_result.empty? %>
+      <h2 class="text-1xl font-extrabold text-green-700">Post Search Results: empty </h2>
+      <% elsif %>
+      <h2 class="text-1xl font-extrabold text-green-700">Post Search Results: </h2>
+      <%= render partial: "posts/post", collection: @post_search_result %>
+    <% end %>
+  <% end %>
+
+
+  <%= form_tag("/homepage", :method => "get") do %>
+    <%= text_field_tag :category_search, params[:category_search], placeholder: "Search Categories" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+  <% if @category_search_result %>
+    <% if @category_search_result.empty? %>
+      <h2 class="text-1xl font-extrabold text-green-700">Category Search Results: empty </h2>
+      <% elsif %>
+      <h2 class="text-1xl font-extrabold text-green-700">Category Search Results: </h2>
+      <%= render partial: "categories/category", collection: @category_search_result %>
+    <% end %>
+  <% end %>
 </div>
