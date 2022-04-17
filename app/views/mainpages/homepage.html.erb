@@ -7,8 +7,9 @@
       <% end %>
   <div class="flex-1">
       <h2 class="text-3xl font-extrabold text-green-700">Fresh Posts: </h2>
-      <%= render partial: "posts/post", collection: @posts %>
-
-
+      <% @posts.each do |post| %>
+        <%= render partial: "posts/post", locals: {post: post} %>
+      <% end %>
+      <%= will_paginate @posts %>
   </div>
 </div>
